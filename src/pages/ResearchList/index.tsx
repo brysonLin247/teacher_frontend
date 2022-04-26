@@ -148,7 +148,7 @@ const ResearchList: React.FC = () => {
             type="link"
             onClick={async () => {
               record.files?.map((file) => {
-                saveAs(`http://localhost:8000/api/static/${file.fileName}`, `${file.fileName}`);
+                saveAs(`/static/${file.fileName}`, `${file.fileName}`);
               });
             }}
           >
