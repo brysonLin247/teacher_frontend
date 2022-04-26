@@ -19,6 +19,12 @@
     ],
   },
   {
+    name: 'settings',
+    path: '/settings',
+    hideInMenu: true,
+    component: './user/Settings',
+  },
+  {
     path: '/welcome',
     name: 'welcome',
     icon: 'smile',
@@ -27,7 +33,6 @@
   {
     path: '/docshow/:id',
     name: 'doc-show',
-    icon: 'smile',
     hideInMenu: true,
     component: './DocShow',
   },
@@ -83,6 +88,19 @@
         component: './DocumentsList/newAndEdit'
       }
     ]
+  },
+  {
+    name: 'list.course-list',
+    icon: 'table',
+    path: '/courselist',
+    component: './CourseList',
+  },
+  {
+    name: 'list.student-list',
+    icon: 'table',
+    path: '/studentlist',
+    component: './StudentList',
+    access: 'canAdmin'
   },
   {
     path: '/',

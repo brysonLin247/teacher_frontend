@@ -85,4 +85,12 @@ export default {
   'pages.searchTable.document.author': '公文作者',
   'pages.searchTable.document.content': '公文内容',
   'pages.searchTable.document.picUrl': '封面图片',
+
+  'pages.searchTable.student.id': '学生编号',
+  'pages.searchTable.student.sno': '学号',
+  'pages.searchTable.student.name': '学生姓名',
+  'pages.searchTable.student.year': '年级',
+  'pages.searchTable.student.college': '学院',
+  'pages.searchTable.student.major': '专业',
+  'pages.searchTable.student.className': '班级',
 };

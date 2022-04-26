@@ -5,7 +5,7 @@ import { ProFormCheckbox, ProFormText, LoginForm } from '@ant-design/pro-form';
 import { useIntl, history, FormattedMessage, SelectLang, useModel } from 'umi';
 import { login } from '@/services/ant-design-pro/api';
 import leftPic from '../../../../public/background.svg';
-import logoLogin from '../../../../public/logo.png';
+import logoLogin from '../../../../public/logo-sztu.png';
 
 import styles from './index.less';
 
@@ -75,7 +75,7 @@ const Login: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header} data-lang>
         <div className={styles.logo}>
-          <img src={logoLogin} alt="" />
+          <img src={logoLogin} alt="" height={60} />
           <div className={styles.title}>师资管理系统</div>
         </div>
         <div className={styles.lang} data-lang>

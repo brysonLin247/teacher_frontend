@@ -1,6 +1,7 @@
 export default {
   'menu.welcome': '欢迎',
   'menu.doc-show': '查看公告',
+  'menu.settings': '个人设置',
   'menu.more-blocks': '更多区块',
   'menu.home': '首页',
   'menu.admin': '管理页',
@@ -25,7 +26,9 @@ export default {
   'menu.list': '列表页',
   'menu.list.base-list': '教职数据',
   'menu.list.research-list': '科研管理',
+  'menu.list.student-list': '学生管理',
   'menu.list.documents-list': '公文管理',
+  'menu.list.course-list': '课程管理',
   'menu.list.documents-list.newAndEdit': '编辑公文',
   'menu.list.basic-list': '标准列表',
   'menu.list.card-list': '卡片列表',

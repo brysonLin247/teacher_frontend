@@ -13,7 +13,7 @@ const Settings: LayoutSettings & {
   colorWeak: false,
   title: '师资管理系统',
   pwa: false,
-  logo: 'logo.png',
+  logo: 'logo-sztu.png',
   iconfontUrl: '',
   headerHeight: 48,
   splitMenus: false

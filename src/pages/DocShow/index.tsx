@@ -32,7 +32,7 @@ const DocShow: React.FC = () => {
   const { title, type, author, content, createTime } = doc;
   return (
     <PageHeaderWrapper>
-      <Card style={{ margin: '0 auto', width: '1200px' }}>
+      <Card style={{ margin: '0 auto', width: '100%' }}>
         <Typography>
           <Title level={2} style={{ textAlign: 'center' }}>
             {title}

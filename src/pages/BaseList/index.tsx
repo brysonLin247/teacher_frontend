@@ -67,7 +67,7 @@ const TableList: React.FC = () => {
     try {
       await deleteBase(selectedRows.map((row) => row.id));
       hide();
-      message.success('Deleted successfully and will refresh soon');
+      message.success('删除成功！');
       actionRef.current && actionRef.current.reload();
       return true;
     } catch (error) {
@@ -204,7 +204,6 @@ const TableList: React.FC = () => {
           canAdmin && [
             <a
               key="edit"
-              color="red"
               onClick={() => {
                 setIntial(record);
                 setModalVisible(true);
