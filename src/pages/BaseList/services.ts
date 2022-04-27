@@ -60,3 +60,14 @@ export async function editBase(id: number, body: any) {
     method: 'PUT',
   });
 }
+
+export async function assignCourses(id: number, body: any) {
+  return request<Record<string, any>>(`base/assign/${id}`, {
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'PATCH',
+  });
+}
+

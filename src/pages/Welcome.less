@@ -9,14 +9,26 @@
 
 .box {
   display: flex;
+  width: 100%;
   // justify-content: space-around;
 }
 
 .leftBox {
-  width: 900px;
+  width: 70%;
+  // min-width: 980px;
 }
 
 .rightBox {
-  width: 50%;
+  width: 30%;
+  min-width: 400px;
   margin-left: 20px;
+}
+
+.title {
+  width: 200px;
+  height: 24.5px;
+  overflow: hidden;
+  line-height: 2.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }

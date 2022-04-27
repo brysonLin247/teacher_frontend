@@ -1,25 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Card, Tag, Image } from 'antd';
+import { Card, Tag, Image, Row, Col } from 'antd';
 import { useIntl, FormattedMessage } from 'umi';
 import styles from './Welcome.less';
 import { getDocuments } from './DocumentsList/services';
 import ProList from '@ant-design/pro-list';
 import { history } from 'umi';
 import defaultPic from '../../public/logo-sztu.png';
+import { TeacherCharts } from './Charts/teacherChart';
+import { StudentCharts } from './Charts/studentCharts';
+import { DataCharts } from './Charts/dataCharts';
 const Welcome: React.FC = () => {
   const intl = useIntl();
 
   return (
-    <PageContainer>
+    <>
       <div className={styles.box}>
-        <Card className={styles.leftBox}></Card>
+        {/* <Card></Card> */}
+        {/* <div className={styles.leftBox}> */}
+        <Row className={styles.leftBox} gutter={[16, 16]}>
+          <DataCharts />
+          <Col span={12}>
+            <Card title={'教师任职状态'}>
+              <TeacherCharts />
+            </Card>
+          </Col>
+          <Col span={12}>
+            <Card title={'各学院学生人数'}>
+              <StudentCharts />
+            </Card>
+          </Col>
+        </Row>
+        {/* </div> */}
         <ProList
           className={styles.rightBox}
           rowKey="id"
           headerTitle="公告栏"
           pagination={{
-            pageSize: 5,
+            pageSize: 10,
           }}
           split={true}
           showActions="hover"
@@ -30,12 +48,21 @@ const Welcome: React.FC = () => {
             title: {
               dataIndex: 'title',
               title: '公告名称',
+              render: (text, row) => [
+                <div
+                  className={styles.title}
+                  key={row.id}
+                  onClick={() => history.push(`/docshow/${row.id}`)}
+                >
+                  <span>{text}</span>
+                </div>,
+              ],
             },
             avatar: {
               dataIndex: 'picUrl',
               search: false,
               render: (_, record) => {
-                return <Image src={record.picUrl || defaultPic} width={40} />;
+                return <Image src={record.picUrl || defaultPic} width={60} />;
               },
             },
             subTitle: {
@@ -50,20 +77,7 @@ const Welcome: React.FC = () => {
                 return <Tag color="#5BD8A6">{type}</Tag>;
               },
             },
-            actions: {
-              render: (text, row) => [
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key="view"
-                  onClick={() => history.push(`/docshow/${row.id}`)}
-                >
-                  查看
-                </a>,
-              ],
-            },
           }}
-          // dataSource={docList}
           request={async (
             params: T & {
               pageSize: number;
@@ -81,7 +95,6 @@ const Welcome: React.FC = () => {
               type,
               content,
             });
-            console.log(msg);
             return {
               data: msg.data.list,
               success: true,
@@ -90,7 +103,7 @@ const Welcome: React.FC = () => {
           }}
         />
       </div>
-    </PageContainer>
+    </>
   );
 };
 

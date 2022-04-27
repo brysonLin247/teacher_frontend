@@ -10,6 +10,9 @@ import ProDescriptions from '@ant-design/pro-descriptions';
 import { updateRule } from '@/services/ant-design-pro/api';
 import CreatForm from './components/CreateForm';
 import { deleteBase, getBases } from './services';
+import { sztuCollege, sztuMajor } from '../StudentList/contant';
+import { sztuSemester } from '../CourseList/constant';
+import { AssignModal } from './components/AssignModal';
 
 const valueEnum = {
   男: { text: '男' },
@@ -43,6 +46,11 @@ const handleUpdate = async (fields: FormValueType) => {
 
 const TableList: React.FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [assignVisible, setAssignVisible] = useState<boolean>(false);
+  const [base, setBase] = useState({
+    baseId: undefined,
+    courses: [],
+  });
   const [initial, setIntial] = useState(null);
 
   const [showDetail, setShowDetail] = useState<boolean>(false);
@@ -77,7 +85,7 @@ const TableList: React.FC = () => {
     }
   };
 
-  const columns: ProColumns<API.RuleListItem>[] = [
+  const columns: ProColumns[] = [
     {
       title: '序号',
       dataIndex: 'id',
@@ -198,10 +206,22 @@ const TableList: React.FC = () => {
       fixed: 'right',
       align: 'center',
       hideInTable: !canAdmin,
-      width: 120,
+      width: 200,
       render: (_, record) => {
         return (
           canAdmin && [
+            <a
+              key="assign"
+              onClick={() => {
+                setAssignVisible(true);
+                setBase({
+                  baseId: record.id,
+                  courses: record.courses.map((course: any) => course.id),
+                });
+              }}
+            >
+              <FormattedMessage id="pages.searchTable.assign" defaultMessage="分配课程" />
+            </a>,
             <a
               key="edit"
               onClick={() => {
@@ -228,6 +248,31 @@ const TableList: React.FC = () => {
       },
     },
   ];
+
+  const expandedRowRender = (record) => {
+    return (
+      <ProTable
+        columns={[
+          { title: '课程名称', dataIndex: 'cname', key: 'cname' },
+          { title: '年级', dataIndex: 'year', key: 'year' },
+          { title: '学院', dataIndex: 'college', key: 'college', valueEnum: sztuCollege },
+          { title: '专业', dataIndex: 'major', key: 'major', valueEnum: sztuMajor },
+          {
+            title: '班级',
+            dataIndex: 'className',
+            key: 'className',
+            render: (text) => <div>{text}班</div>,
+          },
+          { title: '学期', dataIndex: 'semester', key: 'semester', valueEnum: sztuSemester },
+        ]}
+        headerTitle={false}
+        search={false}
+        options={false}
+        dataSource={record.courses}
+        pagination={false}
+      />
+    );
+  };
 
   return (
     <PageContainer>
@@ -256,8 +301,6 @@ const TableList: React.FC = () => {
         ]}
         // request={rule}
         request={async (
-          // 第一个参数 params 查询表单和 params 参数的结合
-          // 第一个参数中一定会有 pageSize 和  current ，这两个参数是 antd 的规范
           params: T & {
             pageSize: number;
             current: number;
@@ -296,6 +339,10 @@ const TableList: React.FC = () => {
             setSelectedRows(selectedRows);
           },
         }}
+        expandable={{
+          expandedRowRender,
+          rowExpandable: (record) => record.courses.length !== 0,
+        }}
       />
       {selectedRowsState?.length > 0 && (
         <FooterToolbar
@@ -304,15 +351,6 @@ const TableList: React.FC = () => {
               <FormattedMessage id="pages.searchTable.chosen" defaultMessage="Chosen" />{' '}
               <a style={{ fontWeight: 600 }}>{selectedRowsState.length}</a>{' '}
               <FormattedMessage id="pages.searchTable.item" defaultMessage="项" />
-              &nbsp;&nbsp;
-              <span>
-                <FormattedMessage
-                  id="pages.searchTable.totalServiceCalls"
-                  defaultMessage="Total number of service calls"
-                />
-                {selectedRowsState.reduce((pre, item) => pre + item.callNo!, 0)}
-                <FormattedMessage id="pages.searchTable.tenThousand" defaultMessage="万" />
-              </span>
             </div>
           }
         >
@@ -328,15 +366,14 @@ const TableList: React.FC = () => {
               defaultMessage="Batch deletion"
             />
           </Button>
-          <Button type="primary">
-            <FormattedMessage
-              id="pages.searchTable.batchApproval"
-              defaultMessage="Batch approval"
-            />
-          </Button>
         </FooterToolbar>
       )}
-
+      <AssignModal
+        base={base}
+        actionRef={actionRef}
+        assignVisible={assignVisible}
+        setAssignVisible={setAssignVisible}
+      />
       <CreatForm
         actionRef={actionRef}
         initial={initial}

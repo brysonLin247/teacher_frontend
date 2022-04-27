@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
   const intl = useIntl();
   const defaultMessage = intl.formatMessage({
     id: 'app.copyright.produced',
-    defaultMessage: '纪漩毕业设计',
+    defaultMessage: '毕业设计',
   });
 
   const currentYear = new Date().getFullYear();

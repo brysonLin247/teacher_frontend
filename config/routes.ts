@@ -56,7 +56,7 @@
   // },
   {
     name: 'list.base-list',
-    icon: 'table',
+    icon: 'Idcard',
     path: '/baselist',
     component: './BaseList',
     access: 'canAdmin'
@@ -69,7 +69,7 @@
   },
   {
     name: 'list.documents-list',
-    icon: 'table',
+    icon: 'Inbox',
     path: '/documentslist',
     hideChildrenInMenu: true,
     access: 'canAdmin',
@@ -91,13 +91,13 @@
   },
   {
     name: 'list.course-list',
-    icon: 'table',
+    icon: 'DeploymentUnit',
     path: '/courselist',
     component: './CourseList',
   },
   {
     name: 'list.student-list',
-    icon: 'table',
+    icon: 'Contacts',
     path: '/studentlist',
     component: './StudentList',
     access: 'canAdmin'

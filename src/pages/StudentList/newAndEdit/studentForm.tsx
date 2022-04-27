@@ -7,7 +7,8 @@ import {
 } from '@ant-design/pro-form';
 import { sztuCollege, sztuMajor, transform } from '../contant';
 
-export const StudentForm = () => {
+export const StudentForm = (props) => {
+  const { initial } = props;
   return (
     <>
       <ProFormGroup>
@@ -16,6 +17,7 @@ export const StudentForm = () => {
           name="sno"
           label="学号"
           rules={[{ required: true, message: '请输入学号!' }]}
+          disabled={initial}
         />
         <ProFormText
           width="sm"
@@ -25,7 +27,7 @@ export const StudentForm = () => {
         />
         <ProFormDatePicker.Year
           name="year"
-          label="年"
+          label="年级"
           width="sm"
           fieldProps={{
             format: 'YYYY',

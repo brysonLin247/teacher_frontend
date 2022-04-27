@@ -1,8 +1,8 @@
 import { ModalForm } from '@ant-design/pro-form';
 import { message } from 'antd';
 import { useIntl } from 'umi';
-import { createStudent, editStudent } from '../services';
-import { StudentForm } from './studentForm';
+import { createCourse, editCourse } from '../services';
+import { CourseForm } from './courseForm';
 
 const NewAndEdit = (props) => {
   const { actionRef, createModalVisible, setCreateModalVisible, initial, setIntial } = props;
@@ -12,7 +12,7 @@ const NewAndEdit = (props) => {
     const hide = message.loading('正在修改');
     if (initial) {
       try {
-        await editStudent(initial.id, fields);
+        await editCourse(initial.id, fields);
         hide();
         message.success('修改成功');
         return true;
@@ -23,7 +23,7 @@ const NewAndEdit = (props) => {
       }
     } else {
       try {
-        await createStudent(fields);
+        await createCourse(fields);
         hide();
         message.success('添加成功');
         return true;
@@ -38,7 +38,7 @@ const NewAndEdit = (props) => {
   return (
     <ModalForm
       title={
-        '新建学生信息'
+        '新建课程信息'
         //   intl.formatMessage({
         //   id: 'pages.searchTable.createForm.newRule',
         //   defaultMessage: 'New rule',
@@ -52,6 +52,7 @@ const NewAndEdit = (props) => {
           college: undefined,
           major: undefined,
           className: undefined,
+          semester: undefined,
         }
       }
       visible={createModalVisible}
@@ -71,7 +72,7 @@ const NewAndEdit = (props) => {
         onCancel: () => setIntial(null),
       }}
     >
-      <StudentForm initial={initial} />
+      <CourseForm />
     </ModalForm>
   );
 };
