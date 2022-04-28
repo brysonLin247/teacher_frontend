@@ -50,6 +50,7 @@ const DetailList: React.FC = (props: any) => {
       valueType: 'option',
       key: 'option',
       align: 'center',
+      width: 60,
       render: (text, record, _, action) => {
         return [
           <>
@@ -137,11 +138,13 @@ const IPList: React.FC<IPListProps> = (props: any) => {
       title: '学分',
       key: 'credit',
       dataIndex: 'credit',
+      search: false,
     },
     {
       title: '课时',
       key: 'hour',
       dataIndex: 'hour',
+      search: false,
     },
     {
       title: '学院',
@@ -190,6 +193,7 @@ const IPList: React.FC<IPListProps> = (props: any) => {
       title: '年级',
       key: 'year',
       dataIndex: 'year',
+      valueType: 'dateYear',
     },
     {
       title: '学期',
@@ -256,6 +260,7 @@ const IPList: React.FC<IPListProps> = (props: any) => {
             hour,
             way,
             year,
+            time,
             semester,
           } = params;
           const msg = await getCourses({
@@ -269,6 +274,7 @@ const IPList: React.FC<IPListProps> = (props: any) => {
             way,
             hour,
             year,
+            time,
             semester,
           });
           return Promise.resolve({
@@ -336,7 +342,7 @@ const CourseList: React.FC = () => {
   return (
     <PageContainer>
       <ProCard split="vertical">
-        <ProCard colSpan="1000px" ghost>
+        <ProCard colSpan="75%" ghost>
           <IPList
             actionRef={actionRef}
             onChange={(students) => {

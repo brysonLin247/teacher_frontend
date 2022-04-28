@@ -9,8 +9,9 @@ export async function getCourses(
     location?: string;
     hour?: number;
     way?: number;
-    year?: number;
+    year?: string;
     semester?: number;
+    time?: number;
     filter?: boolean;
     baseId?: number;
     /** 当前的页码 */
