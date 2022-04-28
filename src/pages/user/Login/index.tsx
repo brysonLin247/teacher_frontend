@@ -181,6 +181,7 @@ const Login: React.FC = () => {
                 style={{
                   float: 'right',
                 }}
+                onClick={() => message.warn('请联系管理员！')}
               >
                 <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
               </a>
