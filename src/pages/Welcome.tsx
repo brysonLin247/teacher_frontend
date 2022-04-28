@@ -1,7 +1,6 @@
 import React from 'react';
-import { PageContainer } from '@ant-design/pro-layout';
 import { Card, Tag, Image, Row, Col } from 'antd';
-import { useIntl, FormattedMessage } from 'umi';
+import { useIntl, FormattedMessage, useAccess } from 'umi';
 import styles from './Welcome.less';
 import { getDocuments } from './DocumentsList/services';
 import ProList from '@ant-design/pro-list';
@@ -10,28 +9,32 @@ import defaultPic from '../../public/logo-sztu.png';
 import { TeacherCharts } from './Charts/teacherChart';
 import { StudentCharts } from './Charts/studentCharts';
 import { DataCharts } from './Charts/dataCharts';
+import { TeacherDataCharts } from './Charts/tearcherDataCharts';
+import { TeacherCourses } from './Charts/teacherCourses';
 const Welcome: React.FC = () => {
   const intl = useIntl();
+  const { canAdmin } = useAccess();
 
   return (
     <>
       <div className={styles.box}>
-        {/* <Card></Card> */}
-        {/* <div className={styles.leftBox}> */}
         <Row className={styles.leftBox} gutter={[16, 16]}>
-          <DataCharts />
-          <Col span={12}>
-            <Card title={'教师任职状态'}>
-              <TeacherCharts />
-            </Card>
-          </Col>
-          <Col span={12}>
-            <Card title={'各学院学生人数'}>
-              <StudentCharts />
-            </Card>
-          </Col>
+          {canAdmin ? <DataCharts /> : <TeacherDataCharts />}
+          {canAdmin ? (
+            <>
+              <Col span={12}>
+                <TeacherCharts />
+              </Col>
+              <Col span={12}>
+                <StudentCharts />
+              </Col>
+            </>
+          ) : (
+            <Col span={24}>
+              <TeacherCourses />
+            </Col>
+          )}
         </Row>
-        {/* </div> */}
         <ProList
           className={styles.rightBox}
           rowKey="id"

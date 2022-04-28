@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BadgeProps, message, Popconfirm } from 'antd';
-import { Button, Badge } from 'antd';
-import { ActionType, ProColumns, TableDropdown } from '@ant-design/pro-table';
+import React, { useRef, useState } from 'react';
+import { message, Popconfirm } from 'antd';
+import { Button } from 'antd';
+import { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProTable from '@ant-design/pro-table';
 import ProCard from '@ant-design/pro-card';
 // @ts-ignore
 import styles from './index.less';
 import { deleteCourse, getCourses } from './services';
-import { FormattedMessage } from 'umi';
+import { FormattedMessage, useAccess } from 'umi';
 import { sztuCollege, sztuMajor } from '../StudentList/contant';
 import { PlusOutlined } from '@ant-design/icons';
 import { sztuSemester, sztuTime, sztuWay } from './constant';
@@ -109,6 +109,7 @@ const IPList: React.FC<IPListProps> = (props: any) => {
   const { actionRef, onChange, cname, getCname, setAchievementId } = props;
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [initial, setIntial] = useState(null);
+  const { canAdmin } = useAccess();
 
   const handleRemove = async (record: any) => {
     const hide = message.loading('正在删除');
@@ -283,15 +284,17 @@ const IPList: React.FC<IPListProps> = (props: any) => {
           return record.cname === cname ? styles['split-row-select-active'] : '';
         }}
         toolBarRender={() => [
-          <Button
-            type="primary"
-            key="primary"
-            onClick={() => {
-              setModalVisible(true);
-            }}
-          >
-            <PlusOutlined /> <FormattedMessage id="pages.searchTable.new" defaultMessage="New" />
-          </Button>,
+          canAdmin && (
+            <Button
+              type="primary"
+              key="primary"
+              onClick={() => {
+                setModalVisible(true);
+              }}
+            >
+              <PlusOutlined /> <FormattedMessage id="pages.searchTable.new" defaultMessage="New" />
+            </Button>
+          ),
         ]}
         // pagination={false}
         search={{

@@ -19,31 +19,6 @@ const valueEnum = {
   女: { text: '女' },
 };
 
-/**
- * @en-US Update node
- * @zh-CN 更新节点
- *
- * @param fields
- */
-const handleUpdate = async (fields: FormValueType) => {
-  const hide = message.loading('Configuring');
-  try {
-    await updateRule({
-      name: fields.name,
-      desc: fields.desc,
-      key: fields.key,
-    });
-    hide();
-
-    message.success('Configuration is successful');
-    return true;
-  } catch (error) {
-    hide();
-    message.error('Configuration failed, please try again!');
-    return false;
-  }
-};
-
 const TableList: React.FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [assignVisible, setAssignVisible] = useState<boolean>(false);

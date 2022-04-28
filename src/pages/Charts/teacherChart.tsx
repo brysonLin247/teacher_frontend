@@ -1,4 +1,5 @@
 import { G2, Pie } from '@ant-design/plots';
+import { Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { getBaseCharts } from './services';
 
@@ -71,8 +72,10 @@ export const TeacherCharts = () => {
     ],
   };
   return (
-    <div style={{ height: '250px' }}>
-      <Pie {...config} />
-    </div>
+    <Card title={'教师任职状态'}>
+      <div style={{ height: '250px' }}>
+        <Pie {...config} />
+      </div>
+    </Card>
   );
 };

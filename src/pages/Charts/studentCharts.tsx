@@ -1,4 +1,5 @@
 import { Bar } from '@ant-design/charts';
+import { Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { sztuCollege } from '../StudentList/contant';
 import { getStudentCharts } from './services';
@@ -34,8 +35,10 @@ export const StudentCharts = () => {
     },
   };
   return (
-    <div style={{ height: '250px' }}>
-      <Bar {...config} />
-    </div>
+    <Card title={'各学院学生人数'}>
+      <div style={{ height: '250px' }}>
+        <Bar {...config} />
+      </div>
+    </Card>
   );
 };

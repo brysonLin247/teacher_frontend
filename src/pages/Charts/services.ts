@@ -28,3 +28,21 @@ export async function getAllData(
     }
   });
 }
+
+export async function getBase(id: number) {
+  return request(`base/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+}
+
+export async function getTeacherData(id: number) {
+  return request(`all/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+}
