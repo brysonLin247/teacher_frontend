@@ -22,7 +22,7 @@ export const TeacherCharts = () => {
     data: chartData,
     angleField: 'value',
     colorField: 'type',
-    radius: 1,
+    radius: 0.8,
     legend: false,
     label: {
       type: 'spider',

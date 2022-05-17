@@ -5,7 +5,7 @@ import styles from './Welcome.less';
 import { getDocuments } from './DocumentsList/services';
 import ProList from '@ant-design/pro-list';
 import { history } from 'umi';
-import defaultPic from '../../public/logo-sztu.png';
+import defaultPic from '../../public/logo.png';
 import { TeacherCharts } from './Charts/teacherChart';
 import { StudentCharts } from './Charts/studentCharts';
 import { DataCharts } from './Charts/dataCharts';

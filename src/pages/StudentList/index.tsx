@@ -5,7 +5,7 @@ import { Button, message, Popconfirm } from 'antd';
 import { useRef, useState } from 'react';
 import { FormattedMessage, useIntl } from 'umi';
 import { history } from 'umi';
-import { sztuCollege, sztuMajor } from './contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor } from './contant';
 import NewAndEdit from './newAndEdit';
 import { StudentForm } from './newAndEdit/studentForm';
 import { deleteStudent, getStudents } from './services';
@@ -59,13 +59,13 @@ const StudentList: React.FC = () => {
       title: <FormattedMessage id="pages.searchTable.student.college" defaultMessage="学院" />,
       dataIndex: 'college',
       valueType: 'select',
-      valueEnum: sztuCollege,
+      valueEnum: hssfCollege,
     },
     {
       title: <FormattedMessage id="pages.searchTable.student.major" defaultMessage="专业" />,
       dataIndex: 'major',
       valueType: 'select',
-      valueEnum: sztuMajor,
+      valueEnum: hssfMajor,
       fieldProps: {
         showSearch: true,
       },

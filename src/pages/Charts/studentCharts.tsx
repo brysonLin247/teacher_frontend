@@ -1,7 +1,7 @@
 import { Bar } from '@ant-design/charts';
 import { Card } from 'antd';
 import { useEffect, useState } from 'react';
-import { sztuCollege } from '../StudentList/contant';
+import { hssfCollege, sztuCollege } from '../StudentList/contant';
 import { getStudentCharts } from './services';
 
 export const StudentCharts = () => {
@@ -11,7 +11,7 @@ export const StudentCharts = () => {
     let { data } = await getStudentCharts();
     data?.map((d) => {
       d.人数 = Number(d.人数);
-      d.type = sztuCollege[d.type];
+      d.type = hssfCollege[d.type];
       return d;
     });
     setChartData(data);

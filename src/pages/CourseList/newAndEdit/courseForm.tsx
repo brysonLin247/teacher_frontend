@@ -1,4 +1,10 @@
-import { sztuCollege, sztuMajor, transform } from '@/pages/StudentList/contant';
+import {
+  hssfCollege,
+  hssfMajor,
+  sztuCollege,
+  sztuMajor,
+  transform,
+} from '@/pages/StudentList/contant';
 import {
   ProFormDatePicker,
   ProFormDigit,
@@ -39,14 +45,14 @@ export const CourseForm = () => {
           name="college"
           label="学院"
           rules={[{ required: true, message: '请选择学院!' }]}
-          options={transform(sztuCollege)}
+          options={transform(hssfCollege)}
         />
         <ProFormSelect
           width="sm"
           name="major"
           label="专业"
           rules={[{ required: true, message: '请选择专业!' }]}
-          options={transform(sztuMajor)}
+          options={transform(hssfMajor)}
         />
         <ProFormDigit
           label="班级"

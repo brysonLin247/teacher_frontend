@@ -26,6 +26,8 @@ export default {
   'menu.list': '列表页',
   'menu.list.base-list': '教职数据',
   'menu.list.research-list': '科研管理',
+  'menu.list.award-list': '科研管理',
+  'menu.list.assess-list': '学生评测',
   'menu.list.student-list': '学生管理',
   'menu.list.documents-list': '公文管理',
   'menu.list.course-list': '课程管理',

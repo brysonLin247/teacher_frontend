@@ -10,7 +10,7 @@ import ProDescriptions from '@ant-design/pro-descriptions';
 import { updateRule } from '@/services/ant-design-pro/api';
 import CreatForm from './components/CreateForm';
 import { deleteBase, getBases } from './services';
-import { sztuCollege, sztuMajor } from '../StudentList/contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor } from '../StudentList/contant';
 import { sztuSemester } from '../CourseList/constant';
 import { AssignModal } from './components/AssignModal';
 
@@ -230,8 +230,8 @@ const TableList: React.FC = () => {
         columns={[
           { title: '课程名称', dataIndex: 'cname', key: 'cname' },
           { title: '年级', dataIndex: 'year', key: 'year' },
-          { title: '学院', dataIndex: 'college', key: 'college', valueEnum: sztuCollege },
-          { title: '专业', dataIndex: 'major', key: 'major', valueEnum: sztuMajor },
+          { title: '学院', dataIndex: 'college', key: 'college', valueEnum: hssfCollege },
+          { title: '专业', dataIndex: 'major', key: 'major', valueEnum: hssfMajor },
           {
             title: '班级',
             dataIndex: 'className',

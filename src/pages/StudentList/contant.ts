@@ -37,20 +37,24 @@ export const judgeSztuCollege = (college: number) => {
   }
 }
 
-export enum hssfCollege {
-  '数字与统计学院' = 1,
-  '外国语学院',
-  '材料科学与工程学院',
+export const hssfCollege = {
+  1: '数字与统计学院',
+  2: '外国语学院',
+  3: '材料科学与工程学院',
 }
 
-export const judgehssfCollege = (college: number) => {
-  switch (college) {
-    case 1: return ['数学与应用数学(师范)', '信息与计算科学', '统计学', '数据科学与大数据技术']
-    case 2: return ['英语（师范）', '日语', '商务英语']
-    case 3: return ['材料科学与工程', '无机非金属材料工程']
-    default: return [];
-  }
+export const hssfMajor = {
+  1: '数学与应用数学(师范)',
+  2: '信息与计算科学',
+  3: '统计学',
+  4: '数据科学与大数据技术',
+  5: '英语（师范）',
+  6: '日语',
+  7: '商务英语',
+  8: '材料科学与工程',
+  9: '无机非金属材料工程',
 }
+
 
 export const transform = (obj: any) => {
   const arr = [];

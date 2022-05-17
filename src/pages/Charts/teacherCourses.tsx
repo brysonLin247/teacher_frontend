@@ -3,7 +3,7 @@ import ProTable from '@ant-design/pro-table';
 import { Card } from 'antd';
 import { useEffect, useState } from 'react';
 import { sztuSemester } from '../CourseList/constant';
-import { sztuCollege, sztuMajor } from '../StudentList/contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor } from '../StudentList/contant';
 import { getBase } from './services';
 
 export const TeacherCourses = () => {
@@ -15,8 +15,8 @@ export const TeacherCourses = () => {
         columns={[
           { title: '课程名称', dataIndex: 'cname', key: 'cname' },
           { title: '年级', dataIndex: 'year', key: 'year' },
-          { title: '学院', dataIndex: 'college', key: 'college', valueEnum: sztuCollege },
-          { title: '专业', dataIndex: 'major', key: 'major', valueEnum: sztuMajor },
+          { title: '学院', dataIndex: 'college', key: 'college', valueEnum: hssfCollege },
+          { title: '专业', dataIndex: 'major', key: 'major', valueEnum: hssfMajor },
           {
             title: '班级',
             dataIndex: 'className',

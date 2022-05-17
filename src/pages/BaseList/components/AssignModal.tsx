@@ -1,6 +1,6 @@
 import { sztuSemester, sztuTime, sztuWay } from '@/pages/CourseList/constant';
 import { getCourses } from '@/pages/CourseList/services';
-import { sztuCollege, sztuMajor } from '@/pages/StudentList/contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor } from '@/pages/StudentList/contant';
 import { ModalForm } from '@ant-design/pro-form';
 import ProTable, { ProColumns } from '@ant-design/pro-table';
 import { Form, Table } from 'antd';
@@ -33,14 +33,14 @@ export const AssignModal = (props) => {
       key: 'college',
       dataIndex: 'college',
       valueType: 'select',
-      valueEnum: sztuCollege,
+      valueEnum: hssfCollege,
     },
     {
       title: '专业',
       key: 'major',
       dataIndex: 'major',
       valueType: 'select',
-      valueEnum: sztuMajor,
+      valueEnum: hssfMajor,
       fieldProps: {
         showSearch: true,
       },

@@ -61,11 +61,23 @@
     component: './BaseList',
     access: 'canAdmin'
   },
+  // {
+  //   name: 'list.research-list',
+  //   icon: 'table',
+  //   path: '/researchlist',
+  //   component: './ResearchList',
+  // },
   {
-    name: 'list.research-list',
+    name: 'list.award-list',
     icon: 'table',
-    path: '/researchlist',
-    component: './ResearchList',
+    path: '/awardlist',
+    component: './AwardList',
+  },
+  {
+    name: 'list.assess-list',
+    icon: 'table',
+    path: '/assesslist',
+    component: './AssessList',
   },
   {
     name: 'list.documents-list',

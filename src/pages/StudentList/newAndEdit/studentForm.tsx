@@ -5,7 +5,7 @@ import {
   ProFormSelect,
   ProFormText,
 } from '@ant-design/pro-form';
-import { sztuCollege, sztuMajor, transform } from '../contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor, transform } from '../contant';
 
 export const StudentForm = (props) => {
   const { initial } = props;
@@ -41,14 +41,14 @@ export const StudentForm = (props) => {
           key="college"
           label="学院"
           rules={[{ required: true, message: '请选择学院!' }]}
-          options={transform(sztuCollege)}
+          options={transform(hssfCollege)}
         />
         <ProFormSelect
           width="sm"
           name="major"
           label="专业"
           rules={[{ required: true, message: '请选择专业!' }]}
-          options={transform(sztuMajor)}
+          options={transform(hssfMajor)}
         />
         <ProFormDigit
           label="班级"

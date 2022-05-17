@@ -8,7 +8,7 @@ import ProCard from '@ant-design/pro-card';
 import styles from './index.less';
 import { deleteCourse, getCourses } from './services';
 import { FormattedMessage, useAccess } from 'umi';
-import { sztuCollege, sztuMajor } from '../StudentList/contant';
+import { hssfCollege, hssfMajor, sztuCollege, sztuMajor } from '../StudentList/contant';
 import { PlusOutlined } from '@ant-design/icons';
 import { sztuSemester, sztuTime, sztuWay } from './constant';
 import { PageContainer } from '@ant-design/pro-layout';
@@ -151,14 +151,14 @@ const IPList: React.FC<IPListProps> = (props: any) => {
       key: 'college',
       dataIndex: 'college',
       valueType: 'select',
-      valueEnum: sztuCollege,
+      valueEnum: hssfCollege,
     },
     {
       title: '专业',
       key: 'major',
       dataIndex: 'major',
       valueType: 'select',
-      valueEnum: sztuMajor,
+      valueEnum: hssfMajor,
       fieldProps: {
         showSearch: true,
       },

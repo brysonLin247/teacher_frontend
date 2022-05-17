@@ -5,19 +5,20 @@ const Settings: LayoutSettings & {
 } = {
   navTheme: 'light',
   // 拂晓蓝
-  primaryColor: '#722ED1',
-  layout: 'top',
+  primaryColor: '#F29CB1',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: true,
   fixSiderbar: false,
   colorWeak: false,
   title: '师资管理系统',
   pwa: false,
-  logo: 'logo-sztu.png',
+  logo: 'hs.jpeg',
   iconfontUrl: '',
   headerHeight: 48,
   splitMenus: false
 };
+
 
 export default Settings;
 
